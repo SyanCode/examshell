@@ -1,0 +1,46 @@
+{
+  "id": "ft_putnbr",
+  "rank": 2,
+  "time_minutes": 15,
+  "title": "ft_putnbr",
+  "type": "function",
+  "filename": "ft_putnbr.c",
+  "prototype": "void\tft_putnbr(int nb);",
+  "statement": "Write a function that prints an int to the standard output, without using\nprintf, and without a trailing newline. It must correctly handle negative\nnumbers and INT_MIN.\n\nYou may only use the write() system call.",
+  "allowed_functions": [
+    "write"
+  ],
+  "harness": "#include <unistd.h>\n#include <stdlib.h>\n\nvoid ft_putnbr(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    ft_putnbr(atoi(argv[1]));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "0"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "42"
+      ],
+      "expected_stdout": "42"
+    },
+    {
+      "argv": [
+        "-42"
+      ],
+      "expected_stdout": "-42"
+    },
+    {
+      "argv": [
+        "2147483647"
+      ],
+      "expected_stdout": "2147483647"
+    },
+    {
+      "argv": [
+        "-2147483648"
+      ],
+      "expected_stdout": "-2147483648"
+    }
+  ]
+}

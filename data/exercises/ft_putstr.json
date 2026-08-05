@@ -1,0 +1,40 @@
+{
+  "id": "ft_putstr",
+  "rank": 1,
+  "time_minutes": 10,
+  "title": "ft_putstr",
+  "type": "function",
+  "filename": "ft_putstr.c",
+  "prototype": "void\tft_putstr(char *str);",
+  "statement": "Write a function that takes a string and prints it on the standard output.\n\nYou may only use the write() system call (no strlen, no puts, no printf).",
+  "allowed_functions": [
+    "write"
+  ],
+  "harness": "#include <unistd.h>\n\nvoid ft_putstr(char *str);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    ft_putstr(argv[1]);\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "Hello"
+      ],
+      "expected_stdout": "Hello"
+    },
+    {
+      "argv": [
+        ""
+      ],
+      "expected_stdout": ""
+    },
+    {
+      "argv": [
+        "42 is nice"
+      ],
+      "expected_stdout": "42 is nice"
+    },
+    {
+      "argv": [
+        "a"
+      ],
+      "expected_stdout": "a"
+    }
+  ]
+}

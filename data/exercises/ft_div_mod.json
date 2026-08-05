@@ -1,0 +1,49 @@
+{
+  "id": "ft_div_mod",
+  "rank": 2,
+  "time_minutes": 15,
+  "title": "ft_div_mod",
+  "type": "function",
+  "filename": "ft_div_mod.c",
+  "prototype": "void\tft_div_mod(int a, int b, int *div, int *mod);",
+  "statement": "Write a function that computes the integer division and modulo of 'a' by\n'b', and stores the results in '*div' and '*mod' respectively (same\nsemantics as the standard '/' and '%' operators: truncation towards zero).",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_div_mod(int a, int b, int *div, int *mod);\n\nint main(int argc, char **argv)\n{\n    int a;\n    int b;\n    int d;\n    int m;\n\n    (void)argc;\n    a = atoi(argv[1]);\n    b = atoi(argv[2]);\n    d = 0;\n    m = 0;\n    ft_div_mod(a, b, &d, &m);\n    printf(\"%d %d\", d, m);\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "10",
+        "3"
+      ],
+      "expected_stdout": "3 1"
+    },
+    {
+      "argv": [
+        "-10",
+        "3"
+      ],
+      "expected_stdout": "-3 -1"
+    },
+    {
+      "argv": [
+        "10",
+        "-3"
+      ],
+      "expected_stdout": "-3 1"
+    },
+    {
+      "argv": [
+        "7",
+        "7"
+      ],
+      "expected_stdout": "1 0"
+    },
+    {
+      "argv": [
+        "0",
+        "5"
+      ],
+      "expected_stdout": "0 0"
+    }
+  ]
+}

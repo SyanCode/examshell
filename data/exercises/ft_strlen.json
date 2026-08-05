@@ -1,0 +1,38 @@
+{
+  "id": "ft_strlen",
+  "rank": 1,
+  "time_minutes": 10,
+  "title": "ft_strlen",
+  "type": "function",
+  "filename": "ft_strlen.c",
+  "prototype": "int\tft_strlen(char *str);",
+  "statement": "Write a function that returns the length of a string, as an int.\n\nYou may not use the real strlen() or any other libc string function.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n\nint ft_strlen(char *str);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_strlen(argv[1]));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        ""
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "hello"
+      ],
+      "expected_stdout": "5"
+    },
+    {
+      "argv": [
+        "42 is nice"
+      ],
+      "expected_stdout": "10"
+    },
+    {
+      "argv": [
+        "a b c"
+      ],
+      "expected_stdout": "5"
+    }
+  ]
+}

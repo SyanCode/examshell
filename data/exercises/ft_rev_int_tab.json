@@ -1,0 +1,48 @@
+{
+  "id": "ft_rev_int_tab",
+  "rank": 2,
+  "time_minutes": 15,
+  "title": "ft_rev_int_tab",
+  "type": "function",
+  "filename": "ft_rev_int_tab.c",
+  "prototype": "void\tft_rev_int_tab(int *tab, int size);",
+  "statement": "Write a function that reverses the content of an array of ints, in place.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_rev_int_tab(int *tab, int size);\n\nint main(int argc, char **argv)\n{\n    int size;\n    int tab[64];\n    int i;\n\n    size = atoi(argv[1]);\n    tab[0] = 0;\n    i = 0;\n    while (i < size && i + 2 < argc)\n    {\n        tab[i] = atoi(argv[2 + i]);\n        i++;\n    }\n    ft_rev_int_tab(tab, size);\n    i = 0;\n    while (i < size)\n    {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", tab[i]);\n        i++;\n    }\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "5",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "expected_stdout": "5 4 3 2 1"
+    },
+    {
+      "argv": [
+        "1",
+        "42"
+      ],
+      "expected_stdout": "42"
+    },
+    {
+      "argv": [
+        "4",
+        "1",
+        "1",
+        "2",
+        "2"
+      ],
+      "expected_stdout": "2 2 1 1"
+    },
+    {
+      "argv": [
+        "0"
+      ],
+      "expected_stdout": ""
+    }
+  ]
+}

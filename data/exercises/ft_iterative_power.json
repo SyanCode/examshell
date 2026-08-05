@@ -1,0 +1,70 @@
+{
+  "id": "ft_iterative_power",
+  "rank": 3,
+  "time_minutes": 15,
+  "title": "ft_iterative_power",
+  "type": "function",
+  "filename": "ft_iterative_power.c",
+  "prototype": "int\tft_iterative_power(int nb, int power);",
+  "statement": "Write an *iterative* function (no recursion) that returns 'nb' raised to\nthe power 'power'. If 'power' is strictly negative, return 0. If 'power'\nis 0, return 1.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_iterative_power(int nb, int power);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_iterative_power(atoi(argv[1]), atoi(argv[2])));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "2",
+        "10"
+      ],
+      "expected_stdout": "1024"
+    },
+    {
+      "argv": [
+        "3",
+        "0"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "0",
+        "0"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "5",
+        "-3"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "-2",
+        "3"
+      ],
+      "expected_stdout": "-8"
+    },
+    {
+      "argv": [
+        "10",
+        "3"
+      ],
+      "expected_stdout": "1000"
+    },
+    {
+      "argv": [
+        "2",
+        "0"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "1",
+        "5"
+      ],
+      "expected_stdout": "1"
+    }
+  ]
+}

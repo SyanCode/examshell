@@ -1,0 +1,68 @@
+{
+  "id": "ft_find_next_prime",
+  "rank": 3,
+  "time_minutes": 20,
+  "title": "ft_find_next_prime",
+  "type": "function",
+  "filename": "ft_find_next_prime.c",
+  "prototype": "int\tft_find_next_prime(int nb);",
+  "statement": "Write a function that returns the smallest prime number greater than or\nequal to 'nb'. If 'nb' is lower than or equal to 2, it returns 2.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_find_next_prime(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_find_next_prime(atoi(argv[1])));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "0"
+      ],
+      "expected_stdout": "2"
+    },
+    {
+      "argv": [
+        "1"
+      ],
+      "expected_stdout": "2"
+    },
+    {
+      "argv": [
+        "2"
+      ],
+      "expected_stdout": "2"
+    },
+    {
+      "argv": [
+        "3"
+      ],
+      "expected_stdout": "3"
+    },
+    {
+      "argv": [
+        "4"
+      ],
+      "expected_stdout": "5"
+    },
+    {
+      "argv": [
+        "17"
+      ],
+      "expected_stdout": "17"
+    },
+    {
+      "argv": [
+        "18"
+      ],
+      "expected_stdout": "19"
+    },
+    {
+      "argv": [
+        "20"
+      ],
+      "expected_stdout": "23"
+    },
+    {
+      "argv": [
+        "24"
+      ],
+      "expected_stdout": "29"
+    }
+  ]
+}

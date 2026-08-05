@@ -1,0 +1,74 @@
+{
+  "id": "ft_is_prime",
+  "rank": 3,
+  "time_minutes": 15,
+  "title": "ft_is_prime",
+  "type": "function",
+  "filename": "ft_is_prime.c",
+  "prototype": "int\tft_is_prime(int nb);",
+  "statement": "Write a function that returns 1 if the int 'nb' is a prime number, 0\notherwise.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_is_prime(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_is_prime(atoi(argv[1])));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "0"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "1"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "2"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "3"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "4"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "17"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "18"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "-5"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "97"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "100"
+      ],
+      "expected_stdout": "0"
+    }
+  ]
+}

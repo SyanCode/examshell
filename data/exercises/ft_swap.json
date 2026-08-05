@@ -1,0 +1,42 @@
+{
+  "id": "ft_swap",
+  "rank": 2,
+  "time_minutes": 10,
+  "title": "ft_swap",
+  "type": "function",
+  "filename": "ft_swap.c",
+  "prototype": "void\tft_swap(int *a, int *b);",
+  "statement": "Write a function that swaps the two integers pointed to by 'a' and 'b'.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_swap(int *a, int *b);\n\nint main(int argc, char **argv)\n{\n    int a;\n    int b;\n\n    (void)argc;\n    a = atoi(argv[1]);\n    b = atoi(argv[2]);\n    ft_swap(&a, &b);\n    printf(\"%d %d\", a, b);\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "3",
+        "5"
+      ],
+      "expected_stdout": "5 3"
+    },
+    {
+      "argv": [
+        "-1",
+        "1"
+      ],
+      "expected_stdout": "1 -1"
+    },
+    {
+      "argv": [
+        "0",
+        "0"
+      ],
+      "expected_stdout": "0 0"
+    },
+    {
+      "argv": [
+        "100",
+        "-100"
+      ],
+      "expected_stdout": "-100 100"
+    }
+  ]
+}

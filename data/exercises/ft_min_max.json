@@ -1,0 +1,50 @@
+{
+  "id": "ft_min_max",
+  "rank": 2,
+  "time_minutes": 15,
+  "title": "ft_min_max",
+  "type": "function",
+  "filename": "ft_min_max.c",
+  "prototype": "void\tft_min_max(int a, int b, int c, int d, int *min, int *max);",
+  "statement": "Write a function that takes 4 ints ('a', 'b', 'c', 'd') and stores the\nsmallest one in '*min' and the largest one in '*max'.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_min_max(int a, int b, int c, int d, int *min, int *max);\n\nint main(int argc, char **argv)\n{\n    int mn;\n    int mx;\n\n    (void)argc;\n    mn = 0;\n    mx = 0;\n    ft_min_max(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), &mn, &mx);\n    printf(\"%d %d\", mn, mx);\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "4",
+        "2",
+        "7",
+        "1"
+      ],
+      "expected_stdout": "1 7"
+    },
+    {
+      "argv": [
+        "-5",
+        "-1",
+        "-10",
+        "0"
+      ],
+      "expected_stdout": "-10 0"
+    },
+    {
+      "argv": [
+        "5",
+        "5",
+        "5",
+        "5"
+      ],
+      "expected_stdout": "5 5"
+    },
+    {
+      "argv": [
+        "3",
+        "3",
+        "1",
+        "9"
+      ],
+      "expected_stdout": "1 9"
+    }
+  ]
+}

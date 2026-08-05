@@ -1,0 +1,68 @@
+{
+  "id": "ft_sqrt",
+  "rank": 3,
+  "time_minutes": 20,
+  "title": "ft_sqrt",
+  "type": "function",
+  "filename": "ft_sqrt.c",
+  "prototype": "int\tft_sqrt(int nb);",
+  "statement": "Write a function that returns the square root of 'nb' if it is a perfect\nsquare (i.e. its root is itself a whole number representable as an int),\nand 0 otherwise. Watch out for integer overflow.",
+  "allowed_functions": [],
+  "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_sqrt(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_sqrt(atoi(argv[1])));\n    return (0);\n}\n",
+  "tests": [
+    {
+      "argv": [
+        "0"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "1"
+      ],
+      "expected_stdout": "1"
+    },
+    {
+      "argv": [
+        "4"
+      ],
+      "expected_stdout": "2"
+    },
+    {
+      "argv": [
+        "9"
+      ],
+      "expected_stdout": "3"
+    },
+    {
+      "argv": [
+        "15"
+      ],
+      "expected_stdout": "0"
+    },
+    {
+      "argv": [
+        "16"
+      ],
+      "expected_stdout": "4"
+    },
+    {
+      "argv": [
+        "100"
+      ],
+      "expected_stdout": "10"
+    },
+    {
+      "argv": [
+        "2147395600"
+      ],
+      "expected_stdout": "46340"
+    },
+    {
+      "argv": [
+        "2147483646"
+      ],
+      "expected_stdout": "0"
+    }
+  ]
+}
