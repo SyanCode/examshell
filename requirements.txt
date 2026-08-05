@@ -1,0 +1,3 @@
+# Only needed for the browser front-end (`examshell.web` / bin/examshell-web).
+# The core CLI (`python3 -m examshell`) has no dependencies beyond the stdlib.
+websockets>=13

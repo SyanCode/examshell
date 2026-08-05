@@ -49,6 +49,33 @@ python3 -m examshell test ft_swap mon_fichier.c  # compiler + tester un fichier 
 
 `test` renvoie un code de sortie 0 si tous les tests passent, 1 sinon.
 
+## Mode web (terminal dans le navigateur)
+
+Pour accéder à examshell depuis une page web plutôt que de lancer le
+script à la main :
+
+```sh
+pip3 install -r requirements.txt
+python3 -m examshell.web        # ou: ./bin/examshell-web
+```
+
+Puis ouvre `http://localhost:8000`. C'est un vrai terminal dans la page
+(via [xterm.js](https://xtermjs.org/)), connecté par WebSocket à une
+session `python3 -m examshell` tournant dans un pty côté serveur — donc
+tout fonctionne comme en local, y compris l'ouverture de `nano`/`vim` en
+plein écran pour éditer tes fichiers.
+
+Options :
+
+```sh
+python3 -m examshell.web --http-port 8000 --ws-port 8765
+```
+
+⚠️ **Usage local/de confiance uniquement.** Quiconque atteint ce serveur
+peut exécuter examshell (et l'éditeur qu'il lance) avec les droits du
+processus serveur. Ne l'expose pas sur un réseau non fiable ou sur
+Internet sans authentification devant.
+
 ## Comment ça corrige
 
 Pour chaque exercice, le moteur :
@@ -97,3 +124,5 @@ implémentation vide échoue, pour chacun des 16 exercices.
 
 - Python 3.10+
 - `gcc`
+- Pour le mode web uniquement : `pip3 install -r requirements.txt` (paquet
+  `websockets`) ; le CLI de base n'a aucune dépendance externe.
