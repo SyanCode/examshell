@@ -76,6 +76,66 @@ peut exécuter examshell (et l'éditeur qu'il lance) avec les droits du
 processus serveur. Ne l'expose pas sur un réseau non fiable ou sur
 Internet sans authentification devant.
 
+## Déploiement sur GitHub Pages (100% dans le navigateur)
+
+Il existe une troisième version, sous `pages/`, pensée pour être hébergée
+gratuitement sur **GitHub Pages** — donc sans aucun serveur, ce qui exclut
+le mode web ci-dessus (il a besoin de `gcc` et d'un processus Python côté
+serveur). À la place, cette version compile et exécute le C **directement
+dans le navigateur**, en WebAssembly :
+
+- Le moteur (exercices, minuteur, score, détection de fonctions interdites)
+  est réécrit en JavaScript pur dans `pages/js/` (`exercises.js`,
+  `session.js`, `forbidden.js`), en portage fidèle de
+  `examshell/exercises.py`, `session.py` et `compiler.py`.
+- La compilation stricte (`-Wall -Wextra -Werror -std=gnu99`) et
+  l'exécution des tests utilisent le vrai compilateur **clang**, lancé en
+  WebAssembly via le [Wasmer JS SDK](https://github.com/wasmerio/wasmer-js)
+  (paquet `clang/clang` du registre Wasmer, chargé depuis un CDN — voir
+  `pages/js/compiler.js`).
+- `pages/coi-serviceworker.js` (vendored depuis
+  [wasmer-js/examples/cdn-coi-serviceworker](https://github.com/wasmerio/wasmer-js/tree/main/examples/cdn-coi-serviceworker),
+  lui-même basé sur [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker))
+  ajoute les en-têtes `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy`
+  requis par le SDK (`SharedArrayBuffer`), que GitHub Pages ne permet pas de
+  configurer côté serveur.
+
+### Activer le déploiement
+
+1. Dans les paramètres du repo GitHub : **Settings → Pages → Build and
+   deployment → Source : "GitHub Actions"**.
+2. Un push sur `main` qui touche `pages/`, `data/` ou
+   `scripts/build_web_data.py` déclenche `.github/workflows/deploy-pages.yml`,
+   qui régénère `pages/data/` (via `scripts/build_web_data.py`, pour que les
+   exercices servis correspondent toujours à `data/exercises/`) puis publie
+   `pages/` tel quel. Déclenchement manuel possible via l'onglet *Actions*
+   (`workflow_dispatch`).
+
+### Limites connues
+
+- **Dépendance externe au runtime** : la page va chercher `clang/clang`
+  sur le registre public de Wasmer au premier lancement (mis en cache par
+  le navigateur ensuite). Si ce service est indisponible, la compilation
+  échoue avec un message d'erreur explicite dans l'interface — ce n'est pas
+  un bug de la page elle-même.
+- **Pas de "kill" dur sur boucle infinie** : contrairement au mode CLI/web
+  (qui tue le process `gcc`/binaire via `subprocess.run(timeout=...)`), le
+  SDK Wasmer n'expose pas de méthode pour interrompre de force une instance
+  WASI en cours d'exécution. Un test qui dépasse son timeout est bien
+  signalé comme tel côté élève, mais le calcul sous-jacent peut continuer
+  en arrière-plan dans le pool de workers du SDK.
+- Cette intégration s'appuie sur l'exemple officiel
+  `wasmerio/wasmer-js/examples/clang-cdn` et sur le paquet `@wasmer/sdk`
+  publié sur npm (API vérifiée dans le code source du paquet), mais n'a pas
+  pu être testée de bout en bout avec un vrai appel réseau vers le CDN/le
+  registre Wasmer depuis l'environnement où elle a été écrite (accès
+  sortant restreint). Tout le reste (chargement des exercices, minuteur,
+  scoring, détection de fonctions interdites, UI) a été vérifié avec des
+  tests Node et un test Playwright. Si la compilation ne fonctionne pas une
+  fois déployé, ouvre la console du navigateur : le message d'erreur
+  affiché dans l'interface vient directement de `Wasmer.fromRegistry` /
+  `clang.entrypoint.run` et devrait indiquer la cause.
+
 ## Comment ça corrige
 
 Pour chaque exercice, le moteur :

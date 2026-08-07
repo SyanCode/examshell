@@ -1,0 +1,799 @@
+[
+  {
+    "id": "ft_div_mod",
+    "rank": 2,
+    "time_minutes": 15,
+    "title": "ft_div_mod",
+    "type": "function",
+    "filename": "ft_div_mod.c",
+    "prototype": "void\tft_div_mod(int a, int b, int *div, int *mod);",
+    "statement": "Write a function that computes the integer division and modulo of 'a' by\n'b', and stores the results in '*div' and '*mod' respectively (same\nsemantics as the standard '/' and '%' operators: truncation towards zero).",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_div_mod(int a, int b, int *div, int *mod);\n\nint main(int argc, char **argv)\n{\n    int a;\n    int b;\n    int d;\n    int m;\n\n    (void)argc;\n    a = atoi(argv[1]);\n    b = atoi(argv[2]);\n    d = 0;\n    m = 0;\n    ft_div_mod(a, b, &d, &m);\n    printf(\"%d %d\", d, m);\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "10",
+          "3"
+        ],
+        "expected_stdout": "3 1"
+      },
+      {
+        "argv": [
+          "-10",
+          "3"
+        ],
+        "expected_stdout": "-3 -1"
+      },
+      {
+        "argv": [
+          "10",
+          "-3"
+        ],
+        "expected_stdout": "-3 1"
+      },
+      {
+        "argv": [
+          "7",
+          "7"
+        ],
+        "expected_stdout": "1 0"
+      },
+      {
+        "argv": [
+          "0",
+          "5"
+        ],
+        "expected_stdout": "0 0"
+      }
+    ]
+  },
+  {
+    "id": "ft_find_next_prime",
+    "rank": 3,
+    "time_minutes": 20,
+    "title": "ft_find_next_prime",
+    "type": "function",
+    "filename": "ft_find_next_prime.c",
+    "prototype": "int\tft_find_next_prime(int nb);",
+    "statement": "Write a function that returns the smallest prime number greater than or\nequal to 'nb'. If 'nb' is lower than or equal to 2, it returns 2.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_find_next_prime(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_find_next_prime(atoi(argv[1])));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "0"
+        ],
+        "expected_stdout": "2"
+      },
+      {
+        "argv": [
+          "1"
+        ],
+        "expected_stdout": "2"
+      },
+      {
+        "argv": [
+          "2"
+        ],
+        "expected_stdout": "2"
+      },
+      {
+        "argv": [
+          "3"
+        ],
+        "expected_stdout": "3"
+      },
+      {
+        "argv": [
+          "4"
+        ],
+        "expected_stdout": "5"
+      },
+      {
+        "argv": [
+          "17"
+        ],
+        "expected_stdout": "17"
+      },
+      {
+        "argv": [
+          "18"
+        ],
+        "expected_stdout": "19"
+      },
+      {
+        "argv": [
+          "20"
+        ],
+        "expected_stdout": "23"
+      },
+      {
+        "argv": [
+          "24"
+        ],
+        "expected_stdout": "29"
+      }
+    ]
+  },
+  {
+    "id": "ft_is_prime",
+    "rank": 3,
+    "time_minutes": 15,
+    "title": "ft_is_prime",
+    "type": "function",
+    "filename": "ft_is_prime.c",
+    "prototype": "int\tft_is_prime(int nb);",
+    "statement": "Write a function that returns 1 if the int 'nb' is a prime number, 0\notherwise.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_is_prime(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_is_prime(atoi(argv[1])));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "0"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "1"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "2"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "3"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "4"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "17"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "18"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "-5"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "97"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "100"
+        ],
+        "expected_stdout": "0"
+      }
+    ]
+  },
+  {
+    "id": "ft_iterative_power",
+    "rank": 3,
+    "time_minutes": 15,
+    "title": "ft_iterative_power",
+    "type": "function",
+    "filename": "ft_iterative_power.c",
+    "prototype": "int\tft_iterative_power(int nb, int power);",
+    "statement": "Write an *iterative* function (no recursion) that returns 'nb' raised to\nthe power 'power'. If 'power' is strictly negative, return 0. If 'power'\nis 0, return 1.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_iterative_power(int nb, int power);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_iterative_power(atoi(argv[1]), atoi(argv[2])));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "2",
+          "10"
+        ],
+        "expected_stdout": "1024"
+      },
+      {
+        "argv": [
+          "3",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "0",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "5",
+          "-3"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "-2",
+          "3"
+        ],
+        "expected_stdout": "-8"
+      },
+      {
+        "argv": [
+          "10",
+          "3"
+        ],
+        "expected_stdout": "1000"
+      },
+      {
+        "argv": [
+          "2",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "1",
+          "5"
+        ],
+        "expected_stdout": "1"
+      }
+    ]
+  },
+  {
+    "id": "ft_min_max",
+    "rank": 2,
+    "time_minutes": 15,
+    "title": "ft_min_max",
+    "type": "function",
+    "filename": "ft_min_max.c",
+    "prototype": "void\tft_min_max(int a, int b, int c, int d, int *min, int *max);",
+    "statement": "Write a function that takes 4 ints ('a', 'b', 'c', 'd') and stores the\nsmallest one in '*min' and the largest one in '*max'.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_min_max(int a, int b, int c, int d, int *min, int *max);\n\nint main(int argc, char **argv)\n{\n    int mn;\n    int mx;\n\n    (void)argc;\n    mn = 0;\n    mx = 0;\n    ft_min_max(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), &mn, &mx);\n    printf(\"%d %d\", mn, mx);\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "4",
+          "2",
+          "7",
+          "1"
+        ],
+        "expected_stdout": "1 7"
+      },
+      {
+        "argv": [
+          "-5",
+          "-1",
+          "-10",
+          "0"
+        ],
+        "expected_stdout": "-10 0"
+      },
+      {
+        "argv": [
+          "5",
+          "5",
+          "5",
+          "5"
+        ],
+        "expected_stdout": "5 5"
+      },
+      {
+        "argv": [
+          "3",
+          "3",
+          "1",
+          "9"
+        ],
+        "expected_stdout": "1 9"
+      }
+    ]
+  },
+  {
+    "id": "ft_print_comb",
+    "rank": 3,
+    "time_minutes": 20,
+    "title": "ft_print_comb",
+    "type": "program",
+    "filename": "ft_print_comb.c",
+    "prototype": null,
+    "statement": "Write a program that prints every possible combination of 3 different\ndigits, in ascending order, each digit being between 0 and 9. The digits\ninside a combination must be in strictly increasing order, and the\ncombinations themselves must be sorted in ascending lexicographic order.\n\nCombinations are separated by \", \" and the output ends with a newline.\nExample (truncated): \"012, 013, 014, ..., 789\\n\"\n\nYou may only use the write() system call. Your file must define main().",
+    "allowed_functions": [
+      "write"
+    ],
+    "harness": null,
+    "tests": [
+      {
+        "argv": [],
+        "expected_stdout": "012, 013, 014, 015, 016, 017, 018, 019, 023, 024, 025, 026, 027, 028, 029, 034, 035, 036, 037, 038, 039, 045, 046, 047, 048, 049, 056, 057, 058, 059, 067, 068, 069, 078, 079, 089, 123, 124, 125, 126, 127, 128, 129, 134, 135, 136, 137, 138, 139, 145, 146, 147, 148, 149, 156, 157, 158, 159, 167, 168, 169, 178, 179, 189, 234, 235, 236, 237, 238, 239, 245, 246, 247, 248, 249, 256, 257, 258, 259, 267, 268, 269, 278, 279, 289, 345, 346, 347, 348, 349, 356, 357, 358, 359, 367, 368, 369, 378, 379, 389, 456, 457, 458, 459, 467, 468, 469, 478, 479, 489, 567, 568, 569, 578, 579, 589, 678, 679, 689, 789\n"
+      }
+    ]
+  },
+  {
+    "id": "ft_print_comb2",
+    "rank": 3,
+    "time_minutes": 15,
+    "title": "ft_print_comb2",
+    "type": "program",
+    "filename": "ft_print_comb2.c",
+    "prototype": null,
+    "statement": "Write a program that prints every 2-digit number from 00 to 99, in\nascending order, separated by \", \", followed by a newline.\nExample: \"00, 01, 02, ..., 99\\n\"\n\nYou may only use the write() system call. Your file must define main().",
+    "allowed_functions": [
+      "write"
+    ],
+    "harness": null,
+    "tests": [
+      {
+        "argv": [],
+        "expected_stdout": "00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99\n"
+      }
+    ]
+  },
+  {
+    "id": "ft_putchar",
+    "rank": 1,
+    "time_minutes": 10,
+    "title": "ft_putchar",
+    "type": "function",
+    "filename": "ft_putchar.c",
+    "prototype": "void\tft_putchar(char c);",
+    "statement": "Write a function that takes a char and prints it on the standard output.\n\nYou may only use the write() system call.",
+    "allowed_functions": [
+      "write"
+    ],
+    "harness": "#include <unistd.h>\n\nvoid ft_putchar(char c);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    ft_putchar(argv[1][0]);\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "a"
+        ],
+        "expected_stdout": "a"
+      },
+      {
+        "argv": [
+          "Z"
+        ],
+        "expected_stdout": "Z"
+      },
+      {
+        "argv": [
+          " "
+        ],
+        "expected_stdout": " "
+      },
+      {
+        "argv": [
+          "9"
+        ],
+        "expected_stdout": "9"
+      }
+    ]
+  },
+  {
+    "id": "ft_putnbr",
+    "rank": 2,
+    "time_minutes": 15,
+    "title": "ft_putnbr",
+    "type": "function",
+    "filename": "ft_putnbr.c",
+    "prototype": "void\tft_putnbr(int nb);",
+    "statement": "Write a function that prints an int to the standard output, without using\nprintf, and without a trailing newline. It must correctly handle negative\nnumbers and INT_MIN.\n\nYou may only use the write() system call.",
+    "allowed_functions": [
+      "write"
+    ],
+    "harness": "#include <unistd.h>\n#include <stdlib.h>\n\nvoid ft_putnbr(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    ft_putnbr(atoi(argv[1]));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "0"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "42"
+        ],
+        "expected_stdout": "42"
+      },
+      {
+        "argv": [
+          "-42"
+        ],
+        "expected_stdout": "-42"
+      },
+      {
+        "argv": [
+          "2147483647"
+        ],
+        "expected_stdout": "2147483647"
+      },
+      {
+        "argv": [
+          "-2147483648"
+        ],
+        "expected_stdout": "-2147483648"
+      }
+    ]
+  },
+  {
+    "id": "ft_putstr",
+    "rank": 1,
+    "time_minutes": 10,
+    "title": "ft_putstr",
+    "type": "function",
+    "filename": "ft_putstr.c",
+    "prototype": "void\tft_putstr(char *str);",
+    "statement": "Write a function that takes a string and prints it on the standard output.\n\nYou may only use the write() system call (no strlen, no puts, no printf).",
+    "allowed_functions": [
+      "write"
+    ],
+    "harness": "#include <unistd.h>\n\nvoid ft_putstr(char *str);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    ft_putstr(argv[1]);\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "Hello"
+        ],
+        "expected_stdout": "Hello"
+      },
+      {
+        "argv": [
+          ""
+        ],
+        "expected_stdout": ""
+      },
+      {
+        "argv": [
+          "42 is nice"
+        ],
+        "expected_stdout": "42 is nice"
+      },
+      {
+        "argv": [
+          "a"
+        ],
+        "expected_stdout": "a"
+      }
+    ]
+  },
+  {
+    "id": "ft_recursive_power",
+    "rank": 3,
+    "time_minutes": 15,
+    "title": "ft_recursive_power",
+    "type": "function",
+    "filename": "ft_recursive_power.c",
+    "prototype": "int\tft_recursive_power(int nb, int power);",
+    "statement": "Write a *recursive* function that returns 'nb' raised to the power\n'power'. If 'power' is strictly negative, return 0. If 'power' is 0,\nreturn 1.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_recursive_power(int nb, int power);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_recursive_power(atoi(argv[1]), atoi(argv[2])));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "2",
+          "10"
+        ],
+        "expected_stdout": "1024"
+      },
+      {
+        "argv": [
+          "3",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "0",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "5",
+          "-3"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "-2",
+          "3"
+        ],
+        "expected_stdout": "-8"
+      },
+      {
+        "argv": [
+          "10",
+          "3"
+        ],
+        "expected_stdout": "1000"
+      },
+      {
+        "argv": [
+          "2",
+          "0"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "1",
+          "5"
+        ],
+        "expected_stdout": "1"
+      }
+    ]
+  },
+  {
+    "id": "ft_rev_int_tab",
+    "rank": 2,
+    "time_minutes": 15,
+    "title": "ft_rev_int_tab",
+    "type": "function",
+    "filename": "ft_rev_int_tab.c",
+    "prototype": "void\tft_rev_int_tab(int *tab, int size);",
+    "statement": "Write a function that reverses the content of an array of ints, in place.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_rev_int_tab(int *tab, int size);\n\nint main(int argc, char **argv)\n{\n    int size;\n    int tab[64];\n    int i;\n\n    size = atoi(argv[1]);\n    tab[0] = 0;\n    i = 0;\n    while (i < size && i + 2 < argc)\n    {\n        tab[i] = atoi(argv[2 + i]);\n        i++;\n    }\n    ft_rev_int_tab(tab, size);\n    i = 0;\n    while (i < size)\n    {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", tab[i]);\n        i++;\n    }\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "5",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "expected_stdout": "5 4 3 2 1"
+      },
+      {
+        "argv": [
+          "1",
+          "42"
+        ],
+        "expected_stdout": "42"
+      },
+      {
+        "argv": [
+          "4",
+          "1",
+          "1",
+          "2",
+          "2"
+        ],
+        "expected_stdout": "2 2 1 1"
+      },
+      {
+        "argv": [
+          "0"
+        ],
+        "expected_stdout": ""
+      }
+    ]
+  },
+  {
+    "id": "ft_sort_int_tab",
+    "rank": 2,
+    "time_minutes": 15,
+    "title": "ft_sort_int_tab",
+    "type": "function",
+    "filename": "ft_sort_int_tab.c",
+    "prototype": "void\tft_sort_int_tab(int *tab, int size);",
+    "statement": "Write a function that sorts an array of ints in ascending order, in place.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_sort_int_tab(int *tab, int size);\n\nint main(int argc, char **argv)\n{\n    int size;\n    int tab[64];\n    int i;\n\n    size = atoi(argv[1]);\n    tab[0] = 0;\n    i = 0;\n    while (i < size && i + 2 < argc)\n    {\n        tab[i] = atoi(argv[2 + i]);\n        i++;\n    }\n    ft_sort_int_tab(tab, size);\n    i = 0;\n    while (i < size)\n    {\n        if (i > 0)\n            printf(\" \");\n        printf(\"%d\", tab[i]);\n        i++;\n    }\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "5",
+          "5",
+          "3",
+          "4",
+          "1",
+          "2"
+        ],
+        "expected_stdout": "1 2 3 4 5"
+      },
+      {
+        "argv": [
+          "4",
+          "1",
+          "1",
+          "2",
+          "2"
+        ],
+        "expected_stdout": "1 1 2 2"
+      },
+      {
+        "argv": [
+          "1",
+          "7"
+        ],
+        "expected_stdout": "7"
+      },
+      {
+        "argv": [
+          "6",
+          "-1",
+          "-5",
+          "3",
+          "0",
+          "2",
+          "-2"
+        ],
+        "expected_stdout": "-5 -2 -1 0 2 3"
+      }
+    ]
+  },
+  {
+    "id": "ft_sqrt",
+    "rank": 3,
+    "time_minutes": 20,
+    "title": "ft_sqrt",
+    "type": "function",
+    "filename": "ft_sqrt.c",
+    "prototype": "int\tft_sqrt(int nb);",
+    "statement": "Write a function that returns the square root of 'nb' if it is a perfect\nsquare (i.e. its root is itself a whole number representable as an int),\nand 0 otherwise. Watch out for integer overflow.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nint ft_sqrt(int nb);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_sqrt(atoi(argv[1])));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "0"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "1"
+        ],
+        "expected_stdout": "1"
+      },
+      {
+        "argv": [
+          "4"
+        ],
+        "expected_stdout": "2"
+      },
+      {
+        "argv": [
+          "9"
+        ],
+        "expected_stdout": "3"
+      },
+      {
+        "argv": [
+          "15"
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "16"
+        ],
+        "expected_stdout": "4"
+      },
+      {
+        "argv": [
+          "100"
+        ],
+        "expected_stdout": "10"
+      },
+      {
+        "argv": [
+          "2147395600"
+        ],
+        "expected_stdout": "46340"
+      },
+      {
+        "argv": [
+          "2147483646"
+        ],
+        "expected_stdout": "0"
+      }
+    ]
+  },
+  {
+    "id": "ft_strlen",
+    "rank": 1,
+    "time_minutes": 10,
+    "title": "ft_strlen",
+    "type": "function",
+    "filename": "ft_strlen.c",
+    "prototype": "int\tft_strlen(char *str);",
+    "statement": "Write a function that returns the length of a string, as an int.\n\nYou may not use the real strlen() or any other libc string function.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n\nint ft_strlen(char *str);\n\nint main(int argc, char **argv)\n{\n    (void)argc;\n    printf(\"%d\", ft_strlen(argv[1]));\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          ""
+        ],
+        "expected_stdout": "0"
+      },
+      {
+        "argv": [
+          "hello"
+        ],
+        "expected_stdout": "5"
+      },
+      {
+        "argv": [
+          "42 is nice"
+        ],
+        "expected_stdout": "10"
+      },
+      {
+        "argv": [
+          "a b c"
+        ],
+        "expected_stdout": "5"
+      }
+    ]
+  },
+  {
+    "id": "ft_swap",
+    "rank": 2,
+    "time_minutes": 10,
+    "title": "ft_swap",
+    "type": "function",
+    "filename": "ft_swap.c",
+    "prototype": "void\tft_swap(int *a, int *b);",
+    "statement": "Write a function that swaps the two integers pointed to by 'a' and 'b'.",
+    "allowed_functions": [],
+    "harness": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid ft_swap(int *a, int *b);\n\nint main(int argc, char **argv)\n{\n    int a;\n    int b;\n\n    (void)argc;\n    a = atoi(argv[1]);\n    b = atoi(argv[2]);\n    ft_swap(&a, &b);\n    printf(\"%d %d\", a, b);\n    return (0);\n}\n",
+    "tests": [
+      {
+        "argv": [
+          "3",
+          "5"
+        ],
+        "expected_stdout": "5 3"
+      },
+      {
+        "argv": [
+          "-1",
+          "1"
+        ],
+        "expected_stdout": "1 -1"
+      },
+      {
+        "argv": [
+          "0",
+          "0"
+        ],
+        "expected_stdout": "0 0"
+      },
+      {
+        "argv": [
+          "100",
+          "-100"
+        ],
+        "expected_stdout": "-100 100"
+      }
+    ]
+  }
+]
