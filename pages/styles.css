@@ -167,19 +167,17 @@ button.secondary {
 .statement .meta { color: var(--fg-dim); font-size: 0.85rem; margin-bottom: 0.6rem; }
 .statement code, pre { font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace; }
 
-textarea#editor {
+#editor-container {
   width: 100%;
   height: 320px;
   background: #010409;
-  color: var(--fg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 0.8rem;
-  font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
-  font-size: 0.9rem;
-  tab-size: 4;
+  overflow: hidden auto;
   resize: vertical;
 }
+#editor-container .cm-editor { height: 100%; }
+
 
 .editor-actions { display: flex; gap: 0.6rem; margin: 0.7rem 0; align-items: center; }
 .status-line { color: var(--fg-dim); font-size: 0.85rem; }

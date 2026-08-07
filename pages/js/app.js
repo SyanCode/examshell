@@ -1,8 +1,10 @@
 import { loadExercises, skeleton, byRank, loadSolution } from "./exercises.js";
 import { Session, pickExercises, RANK_DURATION_MINUTES, RANK_EXERCISE_COUNT } from "./session.js";
 import { compileAndTest } from "./compiler.js";
+import { CodeEditor } from "./code-editor.js";
 
 const app = document.getElementById("app");
+const codeEditor = new CodeEditor();
 
 const state = {
   exercises: null,
@@ -188,6 +190,30 @@ function renderBoard() {
 
   const wrap = el("div", { class: "workbench" }, [board, workspace]);
   app.replaceChildren(renderTopbar(), el("main", {}, wrap));
+
+  if (state.currentExId) {
+    mountCurrentEditor();
+  } else {
+    codeEditor.destroy();
+  }
+}
+
+function mountCurrentEditor() {
+  const container = document.getElementById("editor-container");
+  const st = state.session.states.get(state.currentExId);
+  if (!container || !st) return;
+  codeEditor
+    .mount(container, {
+      doc: st.code ?? skeleton(st.exercise),
+      onChange: (text) => {
+        st.code = text;
+      },
+    })
+    .catch((err) => {
+      container.replaceChildren(
+        el("div", { class: "error-banner" }, `Impossible de charger l'éditeur de code : ${err}`)
+      );
+    });
 }
 
 function openExercise(exId) {
@@ -213,11 +239,7 @@ function renderEditor() {
     el("div", { style: "margin-top:0.3rem" }, [el("b", {}, "Fonctions autorisées : "), allowed]),
   ]);
 
-  const textarea = el("textarea", { id: "editor", spellcheck: "false" });
-  textarea.value = st.code ?? skeleton(ex);
-  textarea.addEventListener("input", () => {
-    st.code = textarea.value;
-  });
+  const editorContainer = el("div", { id: "editor-container" });
 
   const runBtn = el(
     "button",
@@ -229,7 +251,7 @@ function renderEditor() {
     el("span", { class: "status-line" }, state.statusText),
   ]);
 
-  const container = el("div", {}, [statement, textarea, actions]);
+  const container = el("div", {}, [statement, editorContainer, actions]);
 
   if (state.mode === "practice") {
     container.appendChild(
@@ -386,6 +408,7 @@ function backToMenu() {
 // ---------------------------------------------------------------- render
 
 function render() {
+  if (state.view !== "board") codeEditor.destroy();
   if (state.view === "menu") return renderMenu();
   if (state.view === "exam-setup") return renderExamSetup();
   if (state.view === "board") return renderBoard();

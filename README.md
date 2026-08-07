@@ -99,6 +99,11 @@ dans le navigateur**, en WebAssembly :
   ajoute les en-têtes `Cross-Origin-Opener-Policy` / `Cross-Origin-Embedder-Policy`
   requis par le SDK (`SharedArrayBuffer`), que GitHub Pages ne permet pas de
   configurer côté serveur.
+- L'éditeur de code est un vrai éditeur ([CodeMirror 6](https://codemirror.net/),
+  coloration C + indentation via Tab), pas un `<textarea>` brut — voir
+  `pages/js/code-editor.js`. Chargé depuis un CDN lui aussi, avec des
+  versions figées pour que tous les sous-paquets `@codemirror/*` restent
+  compatibles entre eux.
 
 ### Activer le déploiement
 
@@ -124,17 +129,19 @@ dans le navigateur**, en WebAssembly :
   WASI en cours d'exécution. Un test qui dépasse son timeout est bien
   signalé comme tel côté élève, mais le calcul sous-jacent peut continuer
   en arrière-plan dans le pool de workers du SDK.
-- Cette intégration s'appuie sur l'exemple officiel
-  `wasmerio/wasmer-js/examples/clang-cdn` et sur le paquet `@wasmer/sdk`
-  publié sur npm (API vérifiée dans le code source du paquet), mais n'a pas
-  pu être testée de bout en bout avec un vrai appel réseau vers le CDN/le
-  registre Wasmer depuis l'environnement où elle a été écrite (accès
+- Cette intégration (compilateur *et* éditeur) s'appuie sur les API
+  documentées/officielles des paquets (exemple `wasmerio/wasmer-js/examples/clang-cdn`
+  pour `@wasmer/sdk`, README/typings npm pour `codemirror`), mais n'a pas pu
+  être testée de bout en bout avec un vrai appel réseau vers les CDN
+  (`unpkg.com`, `esm.sh`) depuis l'environnement où elle a été écrite (accès
   sortant restreint). Tout le reste (chargement des exercices, minuteur,
-  scoring, détection de fonctions interdites, UI) a été vérifié avec des
-  tests Node et un test Playwright. Si la compilation ne fonctionne pas une
-  fois déployé, ouvre la console du navigateur : le message d'erreur
-  affiché dans l'interface vient directement de `Wasmer.fromRegistry` /
-  `clang.entrypoint.run` et devrait indiquer la cause.
+  scoring, détection de fonctions interdites, UI, dégradation propre quand
+  un CDN est injoignable) a été vérifié avec des tests Node et des tests
+  Playwright. Si la compilation ou l'éditeur ne fonctionnent pas une fois
+  déployé, ouvre la console du navigateur : les deux modules affichent
+  l'erreur d'origine (`Wasmer.fromRegistry`/`clang.entrypoint.run` pour le
+  compilateur, l'échec d'import dynamique pour l'éditeur) directement dans
+  l'interface.
 
 ## Comment ça corrige
 
